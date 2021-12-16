@@ -57,12 +57,12 @@ public class Sample_01 {
         System.out.println();
 
         // Задание 4
-        int[][] tab1 = new int[8][8];
+        int[][] tab1 = new int[7][7];
 
         for(int i = 0; i < tab1.length; i++){
 
             for(int j = 0; j < tab1.length; j++){
-                if (i == j){
+                if ((i == j) || (i == tab1.length-j-1)){
                     tab1[i][j] = 1;
                 }
                 else
