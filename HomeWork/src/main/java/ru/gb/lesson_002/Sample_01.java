@@ -56,6 +56,27 @@ public class Sample_01 {
 
         System.out.println();
 
+        // Задание 4
+        int[][] tab1 = new int[8][8];
+
+        for(int i = 0; i < tab1.length; i++){
+
+            for(int j = 0; j < tab1.length; j++){
+                if (i == j){
+                    tab1[i][j] = 1;
+                }
+                else
+                    tab1[i][j] = 0;
+                System.out.print(tab1[i][j] + "  ");
+
+            }
+            System.out.println();
+
+        }
+        System.out.println();
+        System.out.println();
+
+
     }
 
 }
