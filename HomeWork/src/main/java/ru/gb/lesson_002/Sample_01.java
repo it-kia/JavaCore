@@ -76,6 +76,30 @@ public class Sample_01 {
         System.out.println();
         System.out.println();
 
+        // Задание 5
+        int minNum=0;
+        int maxNum=0;
+        int fst = 0;
+        int[] arr4 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, -1};
+
+        for (int i = 0; i < arr4.length; i++){
+
+            if (fst == 0){
+                minNum = arr4[i];
+                maxNum = arr4[i];
+                fst = 1;
+            }
+
+            if (minNum > arr4[i]){
+                minNum = arr4[i];
+            }
+            if (maxNum < arr4[i]){
+                maxNum = arr4[i];
+            }
+        }
+        System.out.println("Минимальное значение массива = " + minNum);
+        System.out.println("Максимальное значение массива = " + maxNum);
+
 
     }
 
