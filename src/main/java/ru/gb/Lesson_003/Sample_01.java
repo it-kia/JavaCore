@@ -26,6 +26,7 @@ public class Sample_01 {
                 //if (!isEven(number) && number > 0)
                 //    sum += number; // sum = sum + number;
                 // ctvcghcg
+                // gkhfgfkgfkgf
             }
             else {
                 System.out.println("Вы ввели некорректное число.\nПожалуйста, повторите поытку ввода.");
