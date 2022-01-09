@@ -93,13 +93,13 @@ public class Sample_01 {
             if (minNum > arr4[i]){
                 minNum = arr4[i];
             }
+
             if (maxNum < arr4[i]){
                 maxNum = arr4[i];
             }
         }
         System.out.println("Минимальное значение массива = " + minNum);
         System.out.println("Максимальное значение массива = " + maxNum);
-
 
     }
 

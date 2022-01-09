@@ -25,8 +25,7 @@ public class Sample_01 {
                 scanner.nextLine();
                 //if (!isEven(number) && number > 0)
                 //    sum += number; // sum = sum + number;
-                // проверка 123
-                // hgjhgjhgj
+                // ctvcghcg
             }
             else {
                 System.out.println("Вы ввели некорректное число.\nПожалуйста, повторите поытку ввода.");
