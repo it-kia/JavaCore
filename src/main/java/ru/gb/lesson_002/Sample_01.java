@@ -13,16 +13,16 @@ public class Sample_01 {
 
         int[] arr = {1, 0, 1, 0, 1, 0, 1, 0, 1, 1};
 
-        for(int i = 0; i < arr.length; i++){
+        for (int i = 0; i < arr.length; i++) {
 
-            switch (arr[i]){
+            switch (arr[i]) {
                 case 0:
 
-                    arr[i] = arr[i]  + 1;
+                    arr[i] = arr[i] + 1;
                     break;
 
                 case 1:
-                    arr[i] = arr[i]  - 1;
+                    arr[i] = arr[i] - 1;
                     break;
 
             }
@@ -43,7 +43,7 @@ public class Sample_01 {
         int[] arr2 = new int[8];
         int num = 3;
 
-        for(int i = 0; i < arr2.length; i++){
+        for (int i = 0; i < arr2.length; i++) {
             arr2[i] = num;
             num += 3;
             System.out.print(arr2[i] + " ");
@@ -62,13 +62,12 @@ public class Sample_01 {
 
         int[] arr3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
 
-        for(int i = 0; i < arr3.length; i++){
+        for (int i = 0; i < arr3.length; i++) {
 
-            if (arr3[i] < 6){
-                arr3[i]*= 2;
+            if (arr3[i] < 6) {
+                arr3[i] *= 2;
                 System.out.print(arr3[i] + " ");
-            }
-            else {
+            } else {
                 System.out.print(arr3[i] + " ");
             }
 
@@ -87,13 +86,12 @@ public class Sample_01 {
 
         int[][] tab1 = new int[8][8];
 
-        for(int i = 0; i < tab1.length; i++){
+        for (int i = 0; i < tab1.length; i++) {
 
-            for(int j = 0; j < tab1.length; j++){
-                if ((i == j) || (i == tab1.length-j-1)){
+            for (int j = 0; j < tab1.length; j++) {
+                if ((i == j) || (i == tab1.length - j - 1)) {
                     tab1[i][j] = 1;
-                }
-                else
+                } else
                     tab1[i][j] = 0;
                 System.out.print(tab1[i][j] + "  ");
 
@@ -111,24 +109,24 @@ public class Sample_01 {
         (без помощи интернета);
         ------------------------------------------------------------------------------*/
 
-        int minNum=0;
-        int maxNum=0;
+        int minNum = 0;
+        int maxNum = 0;
         int fst = 0;
         int[] arr4 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, -1};
 
-        for (int i = 0; i < arr4.length; i++){
+        for (int i = 0; i < arr4.length; i++) {
 
-            if (fst == 0){
+            if (fst == 0) {
                 minNum = arr4[i];
                 maxNum = arr4[i];
                 fst = 1;
             }
 
-            if (minNum > arr4[i]){
+            if (minNum > arr4[i]) {
                 minNum = arr4[i];
             }
 
-            if (maxNum < arr4[i]){
+            if (maxNum < arr4[i]) {
                 maxNum = arr4[i];
             }
         }
@@ -148,14 +146,20 @@ public class Sample_01 {
         checkBalance([1, 1, 1, || 2, 1]) → true,
         граница показана символами ||, эти символы в массив не входят.
         ------------------------------------------------------------------------------*/
-/*
+
         //Инициируем массив
-        int[] arr6 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, -1};
+        int[] arr6 = {2, 2, 2, 1, 2, 2, 10, 1};
         boolean res_bln;
 
         //Вызываем созданный метод, присваивая ответ в переменную
         res_bln = find_equality(arr6);
 
+        if (res_bln) {
+            System.out.println("Равенство сторонами в переданном массиве найдено!");
+        }
+
+        System.out.println();
+        System.out.println();
 
         /*------------------------------------------------------------------------------
         Задание 7
@@ -168,22 +172,154 @@ public class Sample_01 {
         При каком n в какую сторону сдвиг можете выбирать сами.
         ------------------------------------------------------------------------------*/
 
-        /**
-         * Метод для 6-го задания, проверяющий среди переданнго массива целых чисел есть ли
-         * место, в котором правая и левые части педанного массива равны
-         * @param numA целое числе
-         * @param numB целое число
-         * @return True - Да, False - Нет.
-         */
-/*        public static boolean find_equality (int[][][][][][][][][][][] inArr){
+        //Инициируем массив
+        int[] arr7 = {1, 2, 3, 4, 5};
 
-            boolean tmpBln;
+        //Куда и насколько пойдет сдвиг (положительное вправо, отрицательное влево)
+        int nShift = -2;
 
+        int[] out_arr;
 
-            // Возвращаем переменную
-            return resBln;
-        }
-*/
+        //Печатаем массив
+        printArray(arr7);
+
+        //Вызываем созданный метод, присваивая ответ в переменную
+        out_arr = shift_array(arr7, nShift);
+
+        //Печатаем массив после сдвига
+        printArray(out_arr);
+
     }
+
+    /**
+     * Метод для 6-го задания, проверяющий среди переданнго массива целых чисел есть ли
+     * место, в котором правая и левые части педанного массива равны
+     * @param inArr целое числе
+     * @return True - Равенство найдено, False - Равенство не найдено.
+     */
+    public static boolean find_equality(int[] inArr) {
+
+        boolean tmpBln = false;
+        int sumLeft;
+        int sumRight;
+        int tmp;
+
+        printArray(inArr);
+
+        // Общий цикл по перебору левого и правого
+        for (int i = 0; i < inArr.length; i++) {
+
+            //Обнуялем значения сумм сторон
+            sumLeft = 0;
+            sumRight = 0;
+
+            //Вложенный цикл по проверке суммы
+            for (int q = 0; q < inArr.length; q++) {
+
+                //Складываем значения из левой части
+                if (q <= i) {
+                    sumLeft = sumLeft + inArr[q];
+                }
+
+                //Складываем значения из правой части
+                if (q > i) {
+                    sumRight = sumRight + inArr[q];
+                }
+
+            }
+
+            // Проверка
+            //System.out.println("sumLeft = [" + sumLeft + "]" + "sumRight = [" + sumRight + "]");
+
+            if (sumLeft == sumRight){
+                //System.out.println("Бинго!");
+                tmpBln = true;
+            }
+
+        }
+
+        // Возвращаем переменную
+        return tmpBln;
+    }
+
+    /**
+     * Метод для 7-го задания, который смещает значение в массиве на количество символов вправо или влево
+     * @param inArr Входяций массив для преобразования
+     * @param nShft Куда и насколько пойдет сдвиг (положительное вправо, отрицательное влево)
+     * @return Массив после сдвига
+     */
+    public static int[] shift_array (int[] inArr, int nShft){
+
+        //Массив для возврата
+        int[] out_array = inArr;
+
+        //Временная переменная
+        int nTmp;
+
+        //Сдвигаем вправо
+        if (nShft > 0){
+
+            //Бежим по массиву с учетом количества, на которое необходимо сдвинуть
+            for (int i = 0; i < nShft; i++) {
+
+                //Сохраняем в переменную первое значение
+                nTmp = inArr[0];
+
+                //Сохраняем последнее значение входящего массива на первое место исходящего
+                out_array[0] = inArr[inArr.length - 1];
+                //System.out.println(inArr[inArr.length - 1]);
+
+                //Перезаписываем массив оставшийся массив
+                for (int q = 1; q < inArr.length - 1; q++) {
+                    inArr[inArr.length - q] = inArr[inArr.length - q - 1];
+                }
+
+                //Вставляем скопированное значение на место сдвига
+                inArr[1] = nTmp;
+            }
+        }
+
+        //Сдвигаем влево
+        if (nShft < 0){
+
+            //Бежим по массиву с учетом количества, на которое необходимо сдвинуть
+            for (int i = 0; i > nShft; i--) {
+
+                //Сохраняем в переменную последнее значение
+                nTmp = inArr[inArr.length - 1];
+
+                //Сохраняем последнее значение в входящего массива на первое место исходящего
+                inArr[inArr.length - 1] = inArr[0];
+
+                //Перезаписываем массив оставшийся массив
+                for (int q = 1; q < inArr.length - 1; q++) {
+                    inArr[q - 1] = inArr[q];
+                }
+
+                //Вставляем скопированное значение на место сдвига
+                inArr[inArr.length - 2] = nTmp;
+            }
+        }
+
+        //Если передан 0
+        if(nShft == 0){
+            out_array = inArr;
+        }
+
+        return out_array;
+
+    }
+
+    /**
+     * Всмомагательный метод для печати передаваемого массива в консоль
+     * @param a метод передаваемый на вход для печати
+     */
+    public static void printArray(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            System.out.print(a[i] + "  ");
+        }
+        System.out.println();
+    }
+
 
 }
